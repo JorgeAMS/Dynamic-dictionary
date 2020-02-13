@@ -20,8 +20,7 @@ def send_message(ipadd, severity, tittle, message):
 
     url = "http://"+ipadd+"/push"
 
-    payload = "{\r\n \"data\":\r\n {\r\n\t  '<PolycomIPPhone><Data priority:\\'"+severity+"\\'> <h1>"+tittle+"</h1> "+message+"</Data></PolycomIPPhone>'\r\n }\r\n}"
-    payload = "{\r\n \"data\":\r\n {\r\n\t  '<PolycomIPPhone><Data priority:\\'"+severity+"\\'> <?php echo 'Hello AMS!' ?> </Data></PolycomIPPhone>'\r\n }\r\n}"
+    payload = "{\r\n \"data\":\r\n {\r\n\t  '<PolycomIPPhone><Data priority:\'"+severity+"\'><body style=\"margin: 0;padding:0;height: 100%;width: 100%;\"><div style=\"position: absolute;width: 100%;height: 100%; background-color: rgba(214, 213, 213, 0.127); margin: 0; padding: 0;\"><div style=\"width: 100%;height: 75%; margin-top: 0;\"><h1 style=\"margin: 0;\">"+tittle+"</h1><hr style=\"width: 90%; margin-left: 5%;\"><h4 style=\"margin: 0;\">"+message+"</h4></div><div style=\"width: 100%;height: 20%; background-color: #ffffff;color: #fff;\"><img style=\"height: 100%;float:right;\" src=\"https://fontslogo.com/wp-content/uploads/2017/08/Schlumberger-Logo-Font.jpg\" alt=\"\"></div></div></body></Data></PolycomIPPhone>'\r\n }\r\n}"
     
     response = requests.request("POST", url, auth=HTTPDigestAuth('Push', 'Push'), data = payload)
     
